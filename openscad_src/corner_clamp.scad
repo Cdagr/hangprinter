@@ -24,7 +24,7 @@ module corner_clamp(){
           mirror([k,0,0])
             rotate([0,0,-30]){
               translate([-(Fat_beam_width+wall_th)+1, -l0+(wall_th+edges)*sqrt(3), 0]){
-                one_rounded_cube4([Fat_beam_width+wall_th-1, l0+a, Fat_beam_width+2*wall_th+2],
+                one_rounded_cube4([Fat_beam_width+wall_th-1, l0+a-2, Fat_beam_width+2*wall_th+2],
                     2, $fn=4*4);
                 translate([-wall_th-1,0,0])
                   cube([2*wall_th, l0+a, wall_th]);
@@ -76,8 +76,8 @@ module corner_clamp(){
                 cylinder(d=3.3, h=Fat_beam_width+2*wall_th+4, $fn=10);
 
         }
-    translate([0,l0-2*rad_b,-1])
-      cylinder(d=2.5, h=wall_th+2, $fn=10);
+    translate([0,l0-3*Beam_width/4,-1])
+      cylinder(d=2.5, h=wall_th+6, $fn=10);
 
 
     translate([0,0,-0.5])
@@ -111,7 +111,8 @@ module corner_clamp(){
   }
 
   // Channel to guide D-line and stiffen up corner
-  channel_l = ((l0-2*rad_b)+(d_hole_l-6))/4;
+
+  channel_l = ((l0-3*Beam_width/4)+(d_hole_l-6))/4;
   channel_r1 = 1;
   channel_r2 = 2.5;
   translate([0,((l0-2*rad_b)+(d_hole_l-6))/2,wall_th])
